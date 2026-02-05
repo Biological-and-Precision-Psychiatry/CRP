@@ -1,13 +1,9 @@
-# The CRP R-package
-
-Utility functions for statistical formatting, inference,
-variance derivations, standardized means, t-tests and meta-analyses
-
+# CRP - An R-package from the Copenhagen Research Centre for Biological and Precision Psychiatry 
 
 ## Installation
 
 ```r
 if(!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
-remotes::install_github("Biological-and-Precision-Psychiatry/CRP-R-package")
+remotes::install_github("Biological-and-Precision-Psychiatry/CRP")
 ```
 
