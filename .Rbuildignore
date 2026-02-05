@@ -1,0 +1,17 @@
+LICENSE
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.gitignore
+^\.git$
+.*~$
+README.md
+NEWS.html
+^build$
+^revdep$
+^revdep_archive$
+^revdep_*
+^pkgs_revdep
+^pkg_notes$
+^misc$
+TODO.md
+.Rhistory

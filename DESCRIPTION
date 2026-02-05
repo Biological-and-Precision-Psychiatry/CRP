@@ -1,0 +1,17 @@
+Package: CRP
+Type: Package
+Title: Statistical Helper Functions
+Version: 0.1.0
+Authors@R: person("Rune", "Haubo B. Christensen", role =  c("aut", "cre"),
+                   email = "rune.hc+rprog@pm.me", 
+                   comment = c(ORCID = "0000-0002-4494-3399"))
+Description: Utility functions for statistical formatting, inference,
+    variance derivations, standardized means, t-tests and meta-analyses.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Suggests:
+    testthat (>= 3.0.0)
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Config/testthat/edition: 3
