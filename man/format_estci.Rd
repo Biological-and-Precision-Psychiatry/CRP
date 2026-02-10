@@ -56,3 +56,6 @@ format_estci(1:2, 0:1, 4:5, use_exp = TRUE)
 \seealso{
 \code{\link[=do_format]{do_format()}} used for the formatting of estimate, lower and upper
 }
+\author{
+Rune Haubo B Christensen
+}

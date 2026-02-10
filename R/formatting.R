@@ -12,6 +12,7 @@
 #'
 #' @returns the input `x` formatted to text (character vector)
 #' @export
+#' @author Rune Haubo B Christensen
 #'
 #' @examples
 #' # Simple example:
@@ -50,6 +51,7 @@ do_format <- function(x, digits = 2) {
 #'
 #' @returns The text "estimate (lower - upper)" (character vector)
 #' @export
+#' @author Rune Haubo B Christensen
 #' @seealso [do_format()] used for the formatting of estimate, lower and upper
 #'
 #' @examples
@@ -112,12 +114,13 @@ format_estci <- function(est, lwr, upr, digits = 2, ci_sep = " - ",
 #' @return Character vector
 #' 
 #' @seealso [format.pval()] which is called internally
+#' @author Rune Haubo B Christensen
+#' @export
 #'
 #' @examples
 #' format_pval2(0.03456)
 #' format_pval2(1e-6)
 #'
-#' @export
 format_pval2 <- function(p, digits = 3) {
   stopifnot(is.numeric(p),
             length(p) > 0,

@@ -11,6 +11,30 @@ load_all(r2path)
 #####################################################################
 ## 2026-02-05
 
+x <- round(rnorm(7), 2)
+x[c(2, 5)] <- NA
+
+x <- c(-1.09, NA, 1.21, -0.23, NA, 0.31, -0.28)
+rm.na(x)
+
+
+x
+first(x)
+last(x)
+
+?rbindall
+
+x <- as.character(round(runif(6), 4))
+x <- gsub(".", ",", x, fixed = TRUE)
+dput(x)
+x <- c("0,0903", "0,7374", "0,6462", "0,6463", "0,5534", "0,622")
+comma2numeric(x)
+comma2numeric(x)
+
+x <- lapply(1:3, function(i) runif(5))
+rbindall(x)
+cbindall(x)
+
 ?quick_read_excel
 readxl::readxl_example()
 

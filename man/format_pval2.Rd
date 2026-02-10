@@ -25,3 +25,6 @@ format_pval2(1e-6)
 \seealso{
 \code{\link[=format.pval]{format.pval()}} which is called internally
 }
+\author{
+Rune Haubo B Christensen
+}

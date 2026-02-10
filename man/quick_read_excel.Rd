@@ -108,3 +108,6 @@ quick_read_excel(path_to_file)
 \code{\link[readxl:read_excel]{readxl::read_excel()}} for further details on the behavior of the
 function
 }
+\author{
+Rune Haubo B Christensen
+}

@@ -15,6 +15,7 @@
 #' @returns A tibble
 #' @seealso [readxl::read_excel()] for further details on the behavior of the 
 #' function
+#' @author Rune Haubo B Christensen
 #' @export
 #' @importFrom readxl read_excel readxl_progress
 #' @importFrom tools file_ext

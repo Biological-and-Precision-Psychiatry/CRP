@@ -31,3 +31,6 @@ round(1.20, digits=2)
 do_format(1.206)
 format(1.206, digits=2)
 }
+\author{
+Rune Haubo B Christensen
+}
