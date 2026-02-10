@@ -11,6 +11,45 @@ load_all(r2path)
 #####################################################################
 ## 2026-02-05
 
+?get_coeftab
+
+iris
+Iris <- as.data.table(iris)
+
+head(iris)
+with(iris, show_set(Sepal.Length, Petal.Length))
+
+tab <- Iris[, .N, Species]
+totpct(tab)
+
+tab <- Iris[, .(Mean = mean(Sepal.Length), .N), Species]
+totpct(tab, n_col = 3, digits=1)
+
+tab <- Iris[, .(Mean = mean(Sepal.Length), .N), Species]
+show_na(tab)
+
+fm <- lm(speed ~ dist, data=cars)
+summary(fm)
+get_coeftab(fm, "dist")
+
+fm <- lm(Ozone ~ Solar.R + Wind + Temp, data=airquality)
+summary(fm)
+get_coeftab(fm, c("Solar.R", "Wind", "Temp"), ci_sep = "; ")
+
+airquality
+class(airquality)
+Airquality <- as.data.table(airquality)
+class(Airquality)
+show_na(Airquality)
+show_na(airquality)
+tmp <- show_na(iris)
+str(tmp)
+is.matrix(tmp)
+d
+
+setDT(iris)
+
+
 x <- round(rnorm(7), 2)
 x[c(2, 5)] <- NA
 

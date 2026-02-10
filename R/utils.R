@@ -105,3 +105,42 @@ first <- function(x) {
 last <- function(x) {
   x[length(x)]
 }
+
+################################################################################
+## show_set
+################################################################################
+#' Detail union and intersection of two variables
+#' 
+#' Convenience function to compare two variables in terms of length, number of unique values, union, and intersection.
+#'
+#' @param A a vector
+#' @param B a vector
+#' @param unique compare only unique entries in `A` and `B`?
+#'
+#' @returns a `data.frame` with 1 row and columns `nA`, `nB`, `uniqueA`, `uniqueB`, `union` `intersect`, `AnotB`, `BnotA`
+#' @author Rune Haubo B Christensen
+#' @export
+#'
+#' @examples
+#' 
+#' head(iris)
+#' with(iris, show_set(Sepal.Length, Petal.Length))
+#' 
+show_set <- function(A, B, unique = TRUE)  {
+  stopifnot(length(unique) == 1L,
+            is.logical(unique))
+  nA <- length(A)
+  nB <- length(B)
+  if(unique) {
+    A <- unique(A)
+    B <- unique(B)
+  }
+  data.frame(nA = nA,
+             nB = nB,
+             uniqueA = length(A),
+             uniqueB = length(B),
+             union = length(union(A, B)),
+             intersect = length(intersect(A, B)),
+             AnotB = length(setdiff(A, B)),
+             BnotA = length(setdiff(B, A)))
+}

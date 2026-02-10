@@ -133,3 +133,56 @@ format_pval2 <- function(p, digits = 3) {
               scientific = FALSE,
               nsmall = digits)
 }
+
+################################################################################
+## format_pval2
+################################################################################
+#' Extract coefficient table with CI and p-value from a model fit
+#'
+#' @param model a model fit such as that produced by `lm` or `glm`
+#' @param coef_name name of coefficient for which to get coefficient table
+#' @param transform optional function (e.g., `exp`) for a log-linear model
+#' @param ci_method `method` to obtain confidence intervals
+#' @param digits number of digits 
+#' @param digits.p number of digits in p-value
+#' @param ci_sep CI separator
+#' @param return return est, CI and p-value (`"est_ci_pval"`) or all values (`"all"`)
+#'
+#' @returns a `data.table` with return values
+#' @author Rune Haubo B Christensen
+#' @importFrom data.table as.data.table ':=' .SD
+#' @importFrom stats coef confint confint.default
+#' @export
+#'
+#' @examples
+#' 
+#' fm <- lm(speed ~ dist, data=cars)
+#' summary(fm)
+#' get_coeftab(fm, "dist")
+#' 
+#' fm <- lm(Ozone ~ Solar.R + Wind + Temp, data=airquality)
+#' summary(fm)
+#' get_coeftab(fm, c("Solar.R", "Wind", "Temp"), ci_sep = "; ")
+#' 
+get_coeftab <- function(model, coef_name, transform = function(x) x, 
+                       ci_method=confint.default,
+                       digits=3, digits.p=3, ci_sep = " - ", 
+                       return=c("est_ci_pval", "all")) {
+  # To make R CMD check happy:
+  . <- Estimate <- `2.5 %` <- `97.5 %` <- pvalue <- est_ci <- NULL 
+  return <- match.arg(return)
+  b <- coef(summary(model))
+  ci <- if(inherits(model, "lm") & !inherits(model, "glm")) confint(model) else ci_method(model)
+  stopifnot(is.character(coef_name),
+            coef_name %in% rownames(b))
+  res <- as.data.table(cbind(b[coef_name, , drop=FALSE], ci[coef_name, , drop=FALSE]))[, -3]
+  colnms <- colnames(res)
+  pval_nm <- colnms[grep("Pr\\(>", colnms)]
+  nms <- c(colnames(b)[1], colnames(ci))
+  res[, (nms) := transform(.SD), .SDcols=nms]
+  res[, pvalue := format_pval2(get(pval_nm), digits = digits.p)]
+  res[, est_ci := format_estci(Estimate, `2.5 %`, `97.5 %`, digits = digits, 
+                               ci_sep = ci_sep)]
+  if(return == "all") res[] else res[, .(est_ci, pvalue)]
+}
+
