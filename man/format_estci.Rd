@@ -4,7 +4,15 @@
 \alias{format_estci}
 \title{Format estimate with confidence interval}
 \usage{
-format_estci(est, lwr, upr, digits = 2, ci_sep = " - ")
+format_estci(
+  est,
+  lwr,
+  upr,
+  digits = 2,
+  ci_sep = " - ",
+  use_exp = FALSE,
+  upr_lim = 100
+)
 }
 \arguments{
 \item{est}{parameter estimate (numeric scalar)}
@@ -16,6 +24,10 @@ format_estci(est, lwr, upr, digits = 2, ci_sep = " - ")
 \item{digits}{number of digits (numeric scalar)}
 
 \item{ci_sep}{CI separator}
+
+\item{use_exp}{exp-transform \code{est}, \code{lwr}, and \code{upr}}
+
+\item{upr_lim}{upper limit for printing of \code{upr} applied when \code{use_exp} is \code{TRUE} to avoid very large numbers.}
 }
 \value{
 The text "estimate (lower - upper)" (character vector)
@@ -33,6 +45,12 @@ format_estci(1.2, 0.8, 1.6, ci_sep="; ")
 
 # Multiple point and interval estimates:
 format_estci(1:2, 0:1, 2:3)
+
+# Illustrate use of use_exp argument:
+format_estci(1:2, 0:1, 2:3, use_exp = TRUE)
+
+# When use_exp = TRUE the upper limit is capped at upr_lim = 100: 
+format_estci(1:2, 0:1, 4:5, use_exp = TRUE)
 
 }
 \seealso{

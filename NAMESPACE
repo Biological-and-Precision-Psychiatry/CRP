@@ -3,3 +3,7 @@
 export(do_format)
 export(format_estci)
 export(format_pval2)
+export(quick_read_excel)
+importFrom(readxl,read_excel)
+importFrom(readxl,readxl_progress)
+importFrom(tools,file_ext)

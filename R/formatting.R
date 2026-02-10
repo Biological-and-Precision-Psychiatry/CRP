@@ -45,6 +45,8 @@ do_format <- function(x, digits = 2) {
 #' @param upr upper limit (numeric scalar)
 #' @param digits number of digits (numeric scalar)
 #' @param ci_sep CI separator
+#' @param use_exp exp-transform `est`, `lwr`, and `upr` 
+#' @param upr_lim upper limit for printing of `upr` applied when `use_exp` is `TRUE` to avoid very large numbers.
 #'
 #' @returns The text "estimate (lower - upper)" (character vector)
 #' @export
@@ -61,24 +63,38 @@ do_format <- function(x, digits = 2) {
 #' # Multiple point and interval estimates:
 #' format_estci(1:2, 0:1, 2:3)
 #' 
-format_estci <- function(est, lwr, upr, digits = 2, ci_sep = " - ") {
-  sapply(c(est, lwr, upr), function(arg) {
+#' # Illustrate use of use_exp argument:
+#' format_estci(1:2, 0:1, 2:3, use_exp = TRUE)
+#' 
+#' # When use_exp = TRUE the upper limit is capped at upr_lim = 100: 
+#' format_estci(1:2, 0:1, 4:5, use_exp = TRUE)
+#' 
+format_estci <- function(est, lwr, upr, digits = 2, ci_sep = " - ", 
+                         use_exp = FALSE, upr_lim = 100) {
+  sapply(c(est, lwr, upr), function(arg) 
     stopifnot(is.numeric(arg), 
-              length(arg) > 0)
-  })
+              length(arg) > 0))
+  sapply(c(digits, ci_sep, use_exp, upr_lim), function(arg)
+    stopifnot(length(arg) == 1L))
   stopifnot(length(est) == length(lwr),
             length(est) == length(upr),
             is.numeric(digits),
-            length(digits) == 1L,
             is.character(ci_sep),
-            length(ci_sep) == 1L)
+            is.logical(use_exp),
+            is.numeric(upr_lim))
   
+  if(use_exp) {
+    est <- exp(est)
+    lwr <- exp(lwr)
+    upr <- exp(upr)
+  }
   paste0(
     do_format(est, digits),
     " (",
     do_format(lwr, digits),
     ci_sep,
-    do_format(upr, digits),
+    ifelse(use_exp & upr > upr_lim, 
+           paste0(">", upr_lim), do_format(upr, digits)),
     ")")
 }
 

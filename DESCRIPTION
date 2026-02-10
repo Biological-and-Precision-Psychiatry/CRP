@@ -1,6 +1,6 @@
 Package: CRP
 Type: Package
-Title: Statistical Helper Functions
+Title: An R-Package from the Copenhagen Research Centre for Biological and Precision Psychiatry
 Version: 0.1.0
 Authors@R: person("Rune", "Haubo B. Christensen", role =  c("aut", "cre"),
                    email = "rune.hc+rprog@pm.me", 
@@ -12,6 +12,9 @@ Encoding: UTF-8
 LazyData: true
 Suggests:
     testthat (>= 3.0.0)
+Imports:
+    readxl,
+    tools
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Config/testthat/edition: 3
