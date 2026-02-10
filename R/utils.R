@@ -1,5 +1,8 @@
 # utils.R
 
+################################################################################
+## comma2numeric
+################################################################################
 #' Comma to numeric
 #' 
 #' Convert a character vector containing numbers with comma as decimal separator
@@ -21,6 +24,9 @@ comma2numeric <- function(x) {
   as.numeric(gsub(",", ".", x))
 }
 
+################################################################################
+## rbindall and cbindall
+################################################################################
 #' rbind or cbind a list
 #'
 #' A generalization of `rbind` and `cbind` to allow parsing a list of objects
@@ -52,6 +58,9 @@ cbindall <- function(...) {
 }
 
 
+################################################################################
+## rm.na
+################################################################################
 #' Remove NA from Vector
 #'
 #' @param x vector possibly with `NA` values
@@ -69,6 +78,9 @@ rm.na <- function(x) {
   x[!is.na(x)]
 } 
 
+################################################################################
+## first and last
+################################################################################
 #' Get First or Last Element
 #'
 #' @param x a vector 
