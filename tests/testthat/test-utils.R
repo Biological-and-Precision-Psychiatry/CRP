@@ -1,6 +1,4 @@
 
-context("testing namedList")
-
 set.seed(12345)
 x <- rnorm(5)
 
