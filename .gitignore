@@ -63,3 +63,4 @@ pkgs_revdep
 # OS temp files
 .DS_Store
 
+docs

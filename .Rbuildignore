@@ -16,3 +16,6 @@ NEWS.html
 TODO.md
 .Rhistory
 ^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

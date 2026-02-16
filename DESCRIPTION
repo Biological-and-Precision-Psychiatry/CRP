@@ -22,3 +22,4 @@ Suggests:
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Config/testthat/edition: 3
+URL: https://biological-and-precision-psychiatry.github.io/CRP/
