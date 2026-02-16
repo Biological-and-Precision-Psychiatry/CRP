@@ -2,3 +2,29 @@ url: https://biological-and-precision-psychiatry.github.io/CRP/
 template:
   bootstrap: 5
 
+reference:
+- title: Functions that format
+  contents:
+  - do_format
+  - format_estci
+  - format_pval2
+  - comma2numeric
+  
+- title: Functions that work on `data.table` objects
+  contents:
+  - totpct
+  - show_set
+  - show_na
+  
+- title: Functions that work on data
+  contents:
+  - rbindall
+  - cbindall
+  - rm.na
+  - first
+  - last
+
+- title: Misc functions
+  contents:
+  - quick_read_excel
+  - get_coeftab
