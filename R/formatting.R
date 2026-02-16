@@ -48,7 +48,8 @@ do_format <- function(x, digits = 2) {
 #' @param digits number of digits (numeric scalar)
 #' @param ci_sep CI separator
 #' @param use_exp exp-transform `est`, `lwr`, and `upr` 
-#' @param upr_lim upper limit for printing of `upr` applied when `use_exp` is `TRUE` to avoid very large numbers.
+#' @param upr_lim upper limit for printing of `upr` applied when `use_exp` is
+#'   `TRUE` to avoid very large numbers.
 #'
 #' @returns The text "estimate (lower - upper)" (character vector)
 #' @export
@@ -70,7 +71,7 @@ do_format <- function(x, digits = 2) {
 #' format_estci(1:2, 0:1, 2:3, use_exp = TRUE)
 #' 
 #' # When use_exp = TRUE the upper limit is capped at upr_lim = 100: 
-#' format_estci(1:2, 0:1, 4:5, use_exp = TRUE)
+#' format_estci(1:2, 0:1, 4:5, use_exp = TRUE, ci_sep="; ")
 #' 
 format_estci <- function(est, lwr, upr, digits = 2, ci_sep = " - ", 
                          use_exp = FALSE, upr_lim = 100) {
@@ -143,10 +144,11 @@ format_pval2 <- function(p, digits = 3) {
 #' @param coef_name name of coefficient for which to get coefficient table
 #' @param transform optional function (e.g., `exp`) for a log-linear model
 #' @param ci_method `method` to obtain confidence intervals
-#' @param digits number of digits 
+#' @param digits number of digits
 #' @param digits.p number of digits in p-value
 #' @param ci_sep CI separator
-#' @param return return est, CI and p-value (`"est_ci_pval"`) or all values (`"all"`)
+#' @param return return est, CI and p-value (`"est_ci_pval"`) or all values
+#'   (`"all"`)
 #'
 #' @returns a `data.table` with return values
 #' @author Rune Haubo B Christensen

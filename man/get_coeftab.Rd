@@ -30,7 +30,8 @@ get_coeftab(
 
 \item{ci_sep}{CI separator}
 
-\item{return}{return est, CI and p-value (\code{"est_ci_pval"}) or all values (\code{"all"})}
+\item{return}{return est, CI and p-value (\code{"est_ci_pval"}) or all values
+(\code{"all"})}
 }
 \value{
 a \code{data.table} with return values

@@ -27,7 +27,8 @@ format_estci(
 
 \item{use_exp}{exp-transform \code{est}, \code{lwr}, and \code{upr}}
 
-\item{upr_lim}{upper limit for printing of \code{upr} applied when \code{use_exp} is \code{TRUE} to avoid very large numbers.}
+\item{upr_lim}{upper limit for printing of \code{upr} applied when \code{use_exp} is
+\code{TRUE} to avoid very large numbers.}
 }
 \value{
 The text "estimate (lower - upper)" (character vector)
