@@ -3,9 +3,8 @@
 library(devtools)
 # has_devel()
 r2path <- "~/GitHub/CRP/CRP"
-# document(pkg=r2path, roclets = c("namespace", "rd"))
-document(pkg=r2path)
-load_all(r2path)
+document()
+load_all()
 
 
 #####################################################################
