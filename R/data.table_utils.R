@@ -4,7 +4,7 @@
 ################################################################################
 ## totpct
 ################################################################################
-#' Add Column Total and Row Percentages to a `data.table` Tabulation
+#' Add column total and row percentages to a `data.table` tabulation
 #'
 #' @param tab a `data.table` tabulation; see Examples
 #' @param name_col name or index of the label column (character or integer)
@@ -18,7 +18,6 @@
 #' @importFrom data.table ':=' copy
 #'
 #' @examples
-#' 
 #' Iris <- as.data.table(iris)
 #'
 #' tab <- Iris[, .N, Species]
@@ -26,7 +25,6 @@
 #'
 #' tab <- Iris[, .(Mean = mean(Sepal.Length), .N), Species]
 #' totpct(tab, n_col = 3, digits=1)
-#' 
 totpct <- function(tab, name_col=1, n_col=2, digits=2) {
   Pct <- NULL # To make R CMD check happy
   stopifnot(ncol(tab) >= 2,
@@ -68,7 +66,7 @@ totpct <- function(tab, name_col=1, n_col=2, digits=2) {
 ################################################################################
 ## show_na
 ################################################################################
-#' Summarize `NA` values in a `data.table`
+#' Summarize `NA` values in a `data.frame` or `data.table`
 #'
 #' @param d a `data.table` or `data.frame` 
 #'
@@ -78,13 +76,13 @@ totpct <- function(tab, name_col=1, n_col=2, digits=2) {
 #' @export
 #'
 #' @examples
-#' 
 #' show_na(airquality)
 #' show_na(iris)
-#' 
 show_na <- function(d) {
-  if(!inherits(d, "data.table")) d <- copy(d)
-  setDT(d)
+  d <- copy(d)
+  if(!inherits(d, "data.table")) {
+    setDT(d)
+  }
   nms <- names(d)
   nas <- sapply(d, function(x) sum(is.na(x)))
   ischar <- sapply(d, is.character)

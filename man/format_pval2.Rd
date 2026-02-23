@@ -10,7 +10,7 @@ format_pval2(p, digits = 3)
 \item{p}{Numeric p-values}
 
 \item{digits}{Number of decimal places. P-values below \code{10^{-digits}}
-are printed as e.g. \code{"< 0.001"}.}
+are printed as e.g. \code{"<0.001"}.}
 }
 \value{
 Character vector
@@ -21,7 +21,6 @@ Easy to use modification of \code{format.pval}.
 \examples{
 format_pval2(0.03456)
 format_pval2(1e-6)
-
 }
 \seealso{
 \code{\link[=format.pval]{format.pval()}} which is called internally

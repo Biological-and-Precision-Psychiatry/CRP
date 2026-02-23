@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{rm.na}
 \alias{rm.na}
-\title{Remove NA from Vector}
+\title{Remove NA from a vector}
 \usage{
 rm.na(x)
 }
@@ -13,13 +13,11 @@ rm.na(x)
 input vector \code{x} cleaned of \code{NA} values
 }
 \description{
-Remove NA from Vector
+Remove NA from a vector
 }
 \examples{
-
 x <- c(-1.09, NA, 1.21, -0.23, NA, 0.31, -0.28)
 rm.na(x)
-
 }
 \author{
 Rune Haubo B Christensen

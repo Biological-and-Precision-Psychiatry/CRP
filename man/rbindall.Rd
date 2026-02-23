@@ -24,11 +24,9 @@ The function definition is essentially
 \code{rbindall <- function(...) do.call(rbind, ...)}
 }
 \examples{
-
 x <- lapply(1:3, function(i) runif(5))
 rbindall(x)
 cbindall(x)
-
 }
 \author{
 Rune Haubo B Christensen

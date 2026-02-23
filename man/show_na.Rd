@@ -2,7 +2,7 @@
 % Please edit documentation in R/data.table_utils.R
 \name{show_na}
 \alias{show_na}
-\title{Summarize \code{NA} values in a \code{data.table}}
+\title{Summarize \code{NA} values in a \code{data.frame} or \code{data.table}}
 \usage{
 show_na(d)
 }
@@ -13,13 +13,11 @@ show_na(d)
 A \code{matrix} summarizing the number of \code{NA}s and zero-length characters
 }
 \description{
-Summarize \code{NA} values in a \code{data.table}
+Summarize \code{NA} values in a \code{data.frame} or \code{data.table}
 }
 \examples{
-
 show_na(airquality)
 show_na(iris)
-
 }
 \author{
 Rune Haubo B Christensen

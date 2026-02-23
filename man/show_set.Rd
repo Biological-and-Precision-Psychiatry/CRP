@@ -18,13 +18,14 @@ a \code{data.frame} with 1 row and columns \code{nA}, \code{nB}, \code{uniqueA},
 \code{uniqueB}, \code{union}, \code{intersect}, \code{AnotB}, \code{BnotA}
 }
 \description{
-Convenience function to compare two variables in terms of length, number of unique values, union, and intersection.
+Convenience function to compare two variables in terms of length, number of
+unique values, union, and intersection.
 }
 \examples{
+show_set(1:5, 3:7)
 
 head(iris)
 with(iris, show_set(Sepal.Length, Petal.Length))
-
 }
 \author{
 Rune Haubo B Christensen

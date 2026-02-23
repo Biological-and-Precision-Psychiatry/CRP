@@ -6,7 +6,8 @@
 #' Format numbers as text with fixed number of decimals
 #' 
 #' Improves the formatting of numbers to text over direct applications of 
-#' `round` and `format` as illustrated in examples.
+#' `round` and `format` by always rounding correctly and also returning the 
+#' expected number of decimals.
 #'
 #' @param x numeric vector of values to format as text
 #' @param digits number of decimal places in the formatted output
@@ -18,15 +19,18 @@
 #' @examples
 #' # Simple example:
 #' do_format(1.23456)
-#' do_format(c(1, 2), 3)
+#' do_format(c(1, 2), digits = 3)
 #' 
-#' # Note that round() looses the last digit:
-#' do_format(1.20)
-#' round(1.20, digits=2)
+#' # Note that round() may loose the last decimal:
+#' round(1.20, digits = 2)
+#' # But do_format preserves the requested 2 decimals:
+#' do_format(1.20, digits = 2)
 #' 
-#' # Note that here format() doesn't round correctly:
-#' do_format(1.206)
-#' format(1.206, digits=2)
+#' # Using format() can be tricky:
+#' format(1.206, nsmall = 2)
+#' format(1.206, digits = 2)
+#' # But do_format gives a useful result:
+#' do_format(1.206, digits = 2)
 do_format <- function(x, digits = 2) {
   stopifnot(is.numeric(x),
             length(x) > 0,
@@ -42,14 +46,14 @@ do_format <- function(x, digits = 2) {
 #' 
 #' Format as "estimate (lower - upper)" 
 #'
-#' @param est parameter estimate (numeric scalar)
-#' @param lwr lower limit (numeric scalar)
-#' @param upr upper limit (numeric scalar)
-#' @param digits number of digits (numeric scalar)
-#' @param ci_sep CI separator
-#' @param use_exp exp-transform `est`, `lwr`, and `upr` 
+#' @param est parameter estimate (numeric vector)
+#' @param lwr lower limit (numeric vector)
+#' @param upr upper limit (numeric vector)
+#' @param digits number of decimals (numeric scalar)
+#' @param ci_sep CI separator, often `" - "` (default) or `"; "` (scalar character)
+#' @param use_exp exp-transform `est`, `lwr`, and `upr`. `FALSE` (default) or `TRUE` 
 #' @param upr_lim upper limit for printing of `upr` applied when `use_exp` is
-#'   `TRUE` to avoid very large numbers.
+#'   `TRUE` to avoid very large numbers (numeric scalar)
 #'
 #' @returns The text "estimate (lower - upper)" (character vector)
 #' @export
@@ -57,22 +61,20 @@ do_format <- function(x, digits = 2) {
 #' @seealso [do_format()] used for the formatting of estimate, lower and upper
 #'
 #' @examples
-#' 
 #' # Basic usage:
 #' format_estci(1.2, 0.8, 1.6)
 #' 
 #' # Change CI-separator:
 #' format_estci(1.2, 0.8, 1.6, ci_sep="; ")
 #' 
-#' # Multiple point and interval estimates:
+#' # Multiple point and interval estimates (vector input):
 #' format_estci(1:2, 0:1, 2:3)
 #' 
 #' # Illustrate use of use_exp argument:
 #' format_estci(1:2, 0:1, 2:3, use_exp = TRUE)
 #' 
 #' # When use_exp = TRUE the upper limit is capped at upr_lim = 100: 
-#' format_estci(1:2, 0:1, 4:5, use_exp = TRUE, ci_sep="; ")
-#' 
+#' format_estci(1:2, 0:1, 4:5, use_exp = TRUE)
 format_estci <- function(est, lwr, upr, digits = 2, ci_sep = " - ", 
                          use_exp = FALSE, upr_lim = 100) {
   stopifnot(is.numeric(est), length(est) > 0,
@@ -112,7 +114,7 @@ format_estci <- function(est, lwr, upr, digits = 2, ci_sep = " - ",
 #'
 #' @param p Numeric p-values
 #' @param digits Number of decimal places. P-values below `10^{-digits}`
-#'   are printed as e.g. `"< 0.001"`.
+#'   are printed as e.g. `"<0.001"`.
 #'
 #' @return Character vector
 #' 
@@ -123,7 +125,6 @@ format_estci <- function(est, lwr, upr, digits = 2, ci_sep = " - ",
 #' @examples
 #' format_pval2(0.03456)
 #' format_pval2(1e-6)
-#'
 format_pval2 <- function(p, digits = 3) {
   stopifnot(is.numeric(p),
             length(p) > 0,
@@ -159,7 +160,6 @@ format_pval2 <- function(p, digits = 3) {
 #' @export
 #'
 #' @examples
-#' 
 #' fm <- lm(speed ~ dist, data=cars)
 #' summary(fm)
 #' get_coeftab(fm, "dist")
@@ -167,7 +167,6 @@ format_pval2 <- function(p, digits = 3) {
 #' fm <- lm(Ozone ~ Solar.R + Wind + Temp, data=airquality)
 #' summary(fm)
 #' get_coeftab(fm, c("Solar.R", "Wind", "Temp"), ci_sep = "; ")
-#' 
 get_coeftab <- function(model, coef_name, transform = function(x) x, 
                        ci_method=confint.default,
                        digits=3, digits.p=3, ci_sep = " - ", 

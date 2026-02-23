@@ -2,7 +2,7 @@
 % Please edit documentation in R/data.table_utils.R
 \name{totpct}
 \alias{totpct}
-\title{Add Column Total and Row Percentages to a \code{data.table} Tabulation}
+\title{Add column total and row percentages to a \code{data.table} tabulation}
 \usage{
 totpct(tab, name_col = 1, n_col = 2, digits = 2)
 }
@@ -19,10 +19,9 @@ totpct(tab, name_col = 1, n_col = 2, digits = 2)
 \code{tab} with appended total-row and percent-column
 }
 \description{
-Add Column Total and Row Percentages to a \code{data.table} Tabulation
+Add column total and row percentages to a \code{data.table} tabulation
 }
 \examples{
-
 Iris <- as.data.table(iris)
 
 tab <- Iris[, .N, Species]
@@ -30,7 +29,6 @@ totpct(tab)
 
 tab <- Iris[, .(Mean = mean(Sepal.Length), .N), Species]
 totpct(tab, n_col = 3, digits=1)
-
 }
 \author{
 Rune Haubo B Christensen

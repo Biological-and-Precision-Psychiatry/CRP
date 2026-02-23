@@ -6,8 +6,8 @@
 #' Comma to numeric
 #' 
 #' Convert a character vector containing numbers with comma as decimal separator
-#' to a numeric vector. This is achieved by substituting `,` with `.` using `gsub`
-#' and coercing the result using `as.numeric`.
+#' to a numeric vector. This is achieved by substituting `,` with `.` using 
+#' `gsub` and coercing the result using `as.numeric`.
 #'
 #' @param x a character vector of numbers with comma as decimal separator
 #'
@@ -16,10 +16,8 @@
 #' @author Rune Haubo B Christensen
 #'
 #' @examples
-#' 
 #' x <- c("0,0903", "0,7374", "0,6462", "0,6463", "0,5534", "0,622")
 #' comma2numeric(x)
-#' 
 comma2numeric <- function(x) {
   as.numeric(gsub(",", ".", x))
 }
@@ -42,11 +40,9 @@ comma2numeric <- function(x) {
 #' @author Rune Haubo B Christensen
 #'
 #' @examples
-#' 
 #' x <- lapply(1:3, function(i) runif(5))
 #' rbindall(x)
 #' cbindall(x)
-#' 
 rbindall <- function(...) {
   do.call(rbind, ...)
 }
@@ -61,7 +57,7 @@ cbindall <- function(...) {
 ################################################################################
 ## rm.na
 ################################################################################
-#' Remove NA from Vector
+#' Remove NA from a vector
 #'
 #' @param x vector possibly with `NA` values
 #'
@@ -70,10 +66,8 @@ cbindall <- function(...) {
 #' @export
 #'
 #' @examples
-#' 
 #' x <- c(-1.09, NA, 1.21, -0.23, NA, 0.31, -0.28)
 #' rm.na(x)
-#' 
 rm.na <- function(x) {
   x[!is.na(x)]
 } 
@@ -81,7 +75,7 @@ rm.na <- function(x) {
 ################################################################################
 ## first and last
 ################################################################################
-#' Get First or Last Element
+#' Get first or last element
 #'
 #' @param x a vector 
 #'
@@ -90,12 +84,10 @@ rm.na <- function(x) {
 #' @export
 #'
 #' @examples
-#' 
 #' x <- rnorm(5)
 #' x
 #' first(x)
 #' last(x)
-#' 
 first <- function(x) {
   x[1]
 }
@@ -111,7 +103,8 @@ last <- function(x) {
 ################################################################################
 #' Detail union and intersection of two variables
 #' 
-#' Convenience function to compare two variables in terms of length, number of unique values, union, and intersection.
+#' Convenience function to compare two variables in terms of length, number of 
+#' unique values, union, and intersection.
 #'
 #' @param A a vector
 #' @param B a vector
@@ -123,10 +116,10 @@ last <- function(x) {
 #' @export
 #'
 #' @examples
+#' show_set(1:5, 3:7)
 #' 
 #' head(iris)
 #' with(iris, show_set(Sepal.Length, Petal.Length))
-#' 
 show_set <- function(A, B, unique = TRUE)  {
   stopifnot(length(unique) == 1L,
             is.logical(unique))

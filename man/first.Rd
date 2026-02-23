@@ -3,7 +3,7 @@
 \name{first}
 \alias{first}
 \alias{last}
-\title{Get First or Last Element}
+\title{Get first or last element}
 \usage{
 first(x)
 
@@ -16,15 +16,13 @@ last(x)
 the first or last element
 }
 \description{
-Get First or Last Element
+Get first or last element
 }
 \examples{
-
 x <- rnorm(5)
 x
 first(x)
 last(x)
-
 }
 \author{
 Rune Haubo B Christensen

@@ -80,8 +80,7 @@ a \code{\link[tibble:tibble]{tibble::tibble()}} as returned by \code{\link[readx
 \code{readxl::read_excel} is very slow when reading excel files from network
 drives. This function fixes that by copying the file to a temporary file that
 exists on a local drive which is then quickly read using \code{readxl::read_excel}.
-}
-\details{
+
 The temporary file is made using \code{base::tempfile} and deleted using
 \code{base::unlink} and \code{base::on.exit} when exiting from \code{quick_read_excel}.
 

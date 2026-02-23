@@ -16,20 +16,24 @@ the input \code{x} formatted to text (character vector)
 }
 \description{
 Improves the formatting of numbers to text over direct applications of
-\code{round} and \code{format} as illustrated in examples.
+\code{round} and \code{format} by always rounding correctly and also returning the
+expected number of decimals.
 }
 \examples{
 # Simple example:
 do_format(1.23456)
-do_format(c(1, 2), 3)
+do_format(c(1, 2), digits = 3)
 
-# Note that round() looses the last digit:
-do_format(1.20)
-round(1.20, digits=2)
+# Note that round() may loose the last decimal:
+round(1.20, digits = 2)
+# But do_format preserves the requested 2 decimals:
+do_format(1.20, digits = 2)
 
-# Note that here format() doesn't round correctly:
-do_format(1.206)
-format(1.206, digits=2)
+# Using format() can be tricky:
+format(1.206, nsmall = 2)
+format(1.206, digits = 2)
+# But do_format gives a useful result:
+do_format(1.206, digits = 2)
 }
 \author{
 Rune Haubo B Christensen

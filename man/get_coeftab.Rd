@@ -41,7 +41,6 @@ a \code{data.table} with return values
 Extract coefficient table with CI and p-value from a model fit
 }
 \examples{
-
 fm <- lm(speed ~ dist, data=cars)
 summary(fm)
 get_coeftab(fm, "dist")
@@ -49,7 +48,6 @@ get_coeftab(fm, "dist")
 fm <- lm(Ozone ~ Solar.R + Wind + Temp, data=airquality)
 summary(fm)
 get_coeftab(fm, c("Solar.R", "Wind", "Temp"), ci_sep = "; ")
-
 }
 \author{
 Rune Haubo B Christensen

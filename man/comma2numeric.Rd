@@ -14,14 +14,12 @@ a numeric vector
 }
 \description{
 Convert a character vector containing numbers with comma as decimal separator
-to a numeric vector. This is achieved by substituting \verb{,} with \code{.} using \code{gsub}
-and coercing the result using \code{as.numeric}.
+to a numeric vector. This is achieved by substituting \verb{,} with \code{.} using
+\code{gsub} and coercing the result using \code{as.numeric}.
 }
 \examples{
-
 x <- c("0,0903", "0,7374", "0,6462", "0,6463", "0,5534", "0,622")
 comma2numeric(x)
-
 }
 \author{
 Rune Haubo B Christensen

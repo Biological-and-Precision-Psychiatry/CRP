@@ -15,20 +15,20 @@ format_estci(
 )
 }
 \arguments{
-\item{est}{parameter estimate (numeric scalar)}
+\item{est}{parameter estimate (numeric vector)}
 
-\item{lwr}{lower limit (numeric scalar)}
+\item{lwr}{lower limit (numeric vector)}
 
-\item{upr}{upper limit (numeric scalar)}
+\item{upr}{upper limit (numeric vector)}
 
-\item{digits}{number of digits (numeric scalar)}
+\item{digits}{number of decimals (numeric scalar)}
 
-\item{ci_sep}{CI separator}
+\item{ci_sep}{CI separator, often \code{" - "} (default) or \code{"; "} (scalar character)}
 
-\item{use_exp}{exp-transform \code{est}, \code{lwr}, and \code{upr}}
+\item{use_exp}{exp-transform \code{est}, \code{lwr}, and \code{upr}. \code{FALSE} (default) or \code{TRUE}}
 
 \item{upr_lim}{upper limit for printing of \code{upr} applied when \code{use_exp} is
-\code{TRUE} to avoid very large numbers.}
+\code{TRUE} to avoid very large numbers (numeric scalar)}
 }
 \value{
 The text "estimate (lower - upper)" (character vector)
@@ -37,22 +37,20 @@ The text "estimate (lower - upper)" (character vector)
 Format as "estimate (lower - upper)"
 }
 \examples{
-
 # Basic usage:
 format_estci(1.2, 0.8, 1.6)
 
 # Change CI-separator:
 format_estci(1.2, 0.8, 1.6, ci_sep="; ")
 
-# Multiple point and interval estimates:
+# Multiple point and interval estimates (vector input):
 format_estci(1:2, 0:1, 2:3)
 
 # Illustrate use of use_exp argument:
 format_estci(1:2, 0:1, 2:3, use_exp = TRUE)
 
 # When use_exp = TRUE the upper limit is capped at upr_lim = 100: 
-format_estci(1:2, 0:1, 4:5, use_exp = TRUE, ci_sep="; ")
-
+format_estci(1:2, 0:1, 4:5, use_exp = TRUE)
 }
 \seealso{
 \code{\link[=do_format]{do_format()}} used for the formatting of estimate, lower and upper

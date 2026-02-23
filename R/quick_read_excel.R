@@ -5,6 +5,7 @@
 ################################################################################
 #' Quickly read excel files from network drives
 #' 
+#' @description
 #' `readxl::read_excel` is very slow when reading excel files from network 
 #' drives. This function fixes that by copying the file to a temporary file that
 #' exists on a local drive which is then quickly read using `readxl::read_excel`. 
