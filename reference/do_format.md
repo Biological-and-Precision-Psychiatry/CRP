@@ -17,7 +17,7 @@ do_format(x, digits = 2)
 
 - digits:
 
-  number of digits in the formatted number
+  number of decimal places in the formatted output
 
 ## Value
 

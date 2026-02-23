@@ -16,15 +16,15 @@ totpct(tab, name_col = 1, n_col = 2, digits = 2)
 
 - name_col:
 
-  indicator of name column (character or numeric)
+  name or index of the label column (character or integer)
 
 - n_col:
 
-  indicator of the numeric column (character or numeric)
+  name or index of the count/numeric column (character or integer)
 
 - digits:
 
-  number of digits in percentages in result
+  number of decimal places in the percentage column
 
 ## Value
 

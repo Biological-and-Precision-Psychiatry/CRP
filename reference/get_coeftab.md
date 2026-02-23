@@ -33,7 +33,8 @@ get_coeftab(
 
 - ci_method:
 
-  `method` to obtain confidence intervals
+  function used to obtain confidence intervals, defaulting to
+  [`confint.default()`](https://rdrr.io/r/stats/confint.html)
 
 - digits:
 

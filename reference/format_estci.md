@@ -80,6 +80,6 @@ format_estci(1:2, 0:1, 2:3, use_exp = TRUE)
 #> [1] "2.72 (1.00 - 7.39)"  "7.39 (2.72 - 20.09)"
 
 # When use_exp = TRUE the upper limit is capped at upr_lim = 100: 
-format_estci(1:2, 0:1, 4:5, use_exp = TRUE)
-#> [1] "2.72 (1.00 - 54.60)" "7.39 (2.72 - >100)" 
+format_estci(1:2, 0:1, 4:5, use_exp = TRUE, ci_sep="; ")
+#> [1] "2.72 (1.00; 54.60)" "7.39 (2.72; >100)" 
 ```

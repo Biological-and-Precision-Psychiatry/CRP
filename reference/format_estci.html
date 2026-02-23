@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">CRP</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,8 +114,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2.72 (1.00 - 7.39)"  "7.39 (2.72 - 20.09)"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># When use_exp = TRUE the upper limit is capped at upr_lim = 100: </span></span></span>
-<span class="r-in"><span><span class="fu">format_estci</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">5</span>, use_exp <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2.72 (1.00 - 54.60)" "7.39 (2.72 - &gt;100)" </span>
+<span class="r-in"><span><span class="fu">format_estci</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">5</span>, use_exp <span class="op">=</span> <span class="cn">TRUE</span>, ci_sep<span class="op">=</span><span class="st">"; "</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2.72 (1.00; 54.60)" "7.39 (2.72; &gt;100)" </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

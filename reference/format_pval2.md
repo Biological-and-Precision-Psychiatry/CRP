@@ -16,7 +16,8 @@ format_pval2(p, digits = 3)
 
 - digits:
 
-  Number of digits
+  Number of decimal places. P-values below `10^{-digits}` are printed as
+  e.g. `"< 0.001"`.
 
 ## Value
 

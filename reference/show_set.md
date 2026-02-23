@@ -26,7 +26,7 @@ show_set(A, B, unique = TRUE)
 ## Value
 
 a `data.frame` with 1 row and columns `nA`, `nB`, `uniqueA`, `uniqueB`,
-`union` `intersect`, `AnotB`, `BnotA`
+`union`, `intersect`, `AnotB`, `BnotA`
 
 ## Author
 

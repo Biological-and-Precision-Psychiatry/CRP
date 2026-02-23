@@ -9,13 +9,13 @@
 
 Haubo B. Christensen R (2026). *CRP: An R-Package from the Copenhagen
 Research Centre for Biological and Precision Psychiatry*. R package
-version 0.1.0,
+version 0.1.0.9001,
 <https://biological-and-precision-psychiatry.github.io/CRP/>.
 
     @Manual{,
       title = {CRP: An R-Package from the Copenhagen Research Centre for Biological and Precision Psychiatry},
       author = {Rune {Haubo B. Christensen}},
       year = {2026},
-      note = {R package version 0.1.0},
+      note = {R package version 0.1.0.9001},
       url = {https://biological-and-precision-psychiatry.github.io/CRP/},
     }

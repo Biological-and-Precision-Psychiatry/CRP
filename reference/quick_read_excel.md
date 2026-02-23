@@ -108,7 +108,10 @@ quick_read_excel(
 
 ## Value
 
-A tibble
+a
+[`tibble::tibble()`](https://tibble.tidyverse.org/reference/tibble.html)
+as returned by
+[`readxl::read_excel()`](https://readxl.tidyverse.org/reference/read_excel.html)
 
 ## Details
 
