@@ -6,6 +6,15 @@ fixes that by copying the file to a temporary file that exists on a
 local drive which is then quickly read using
 [`readxl::read_excel`](https://readxl.tidyverse.org/reference/read_excel.html).
 
+The temporary file is made using
+[`base::tempfile`](https://rdrr.io/r/base/tempfile.html) and deleted
+using [`base::unlink`](https://rdrr.io/r/base/unlink.html) and
+[`base::on.exit`](https://rdrr.io/r/base/on.exit.html) when exiting from
+`quick_read_excel`.
+
+All arguments are taken verbatim from
+[`readxl::read_excel`](https://readxl.tidyverse.org/reference/read_excel.html).
+
 ## Usage
 
 ``` r
@@ -112,17 +121,6 @@ a
 [`tibble::tibble()`](https://tibble.tidyverse.org/reference/tibble.html)
 as returned by
 [`readxl::read_excel()`](https://readxl.tidyverse.org/reference/read_excel.html)
-
-## Details
-
-The temporary file is made using
-[`base::tempfile`](https://rdrr.io/r/base/tempfile.html) and deleted
-using [`base::unlink`](https://rdrr.io/r/base/unlink.html) and
-[`base::on.exit`](https://rdrr.io/r/base/on.exit.html) when exiting from
-`quick_read_excel`.
-
-All arguments are taken verbatim from
-[`readxl::read_excel`](https://readxl.tidyverse.org/reference/read_excel.html).
 
 ## See also
 

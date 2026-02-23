@@ -1,6 +1,6 @@
-# Remove NA from Vector
+# Remove NA from a vector
 
-Remove NA from Vector
+Remove NA from a vector
 
 ## Usage
 

@@ -16,7 +16,7 @@
 - [`totpct()`](https://biological-and-precision-psychiatry.github.io/CRP/reference/totpct.md)
   :
 
-  Add Column Total and Row Percentages to a `data.table` Tabulation
+  Add column total and row percentages to a `data.table` tabulation
 
 - [`show_set()`](https://biological-and-precision-psychiatry.github.io/CRP/reference/show_set.md)
   : Detail union and intersection of two variables
@@ -24,7 +24,7 @@
 - [`show_na()`](https://biological-and-precision-psychiatry.github.io/CRP/reference/show_na.md)
   :
 
-  Summarize `NA` values in a `data.table`
+  Summarize `NA` values in a `data.frame` or `data.table`
 
 ## Functions that work on data
 
@@ -32,10 +32,10 @@
   [`cbindall()`](https://biological-and-precision-psychiatry.github.io/CRP/reference/rbindall.md)
   : rbind or cbind a list
 - [`rm.na()`](https://biological-and-precision-psychiatry.github.io/CRP/reference/rm.na.md)
-  : Remove NA from Vector
+  : Remove NA from a vector
 - [`first()`](https://biological-and-precision-psychiatry.github.io/CRP/reference/first.md)
   [`last()`](https://biological-and-precision-psychiatry.github.io/CRP/reference/first.md)
-  : Get First or Last Element
+  : Get first or last element
 
 ## Misc functions
 

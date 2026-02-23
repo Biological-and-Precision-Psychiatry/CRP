@@ -53,32 +53,32 @@
 
 
 <dl><dt id="arg-est">est<a class="anchor" aria-label="anchor" href="#arg-est"></a></dt>
-<dd><p>parameter estimate (numeric scalar)</p></dd>
+<dd><p>parameter estimate (numeric vector)</p></dd>
 
 
 <dt id="arg-lwr">lwr<a class="anchor" aria-label="anchor" href="#arg-lwr"></a></dt>
-<dd><p>lower limit (numeric scalar)</p></dd>
+<dd><p>lower limit (numeric vector)</p></dd>
 
 
 <dt id="arg-upr">upr<a class="anchor" aria-label="anchor" href="#arg-upr"></a></dt>
-<dd><p>upper limit (numeric scalar)</p></dd>
+<dd><p>upper limit (numeric vector)</p></dd>
 
 
 <dt id="arg-digits">digits<a class="anchor" aria-label="anchor" href="#arg-digits"></a></dt>
-<dd><p>number of digits (numeric scalar)</p></dd>
+<dd><p>number of decimals (numeric scalar)</p></dd>
 
 
 <dt id="arg-ci-sep">ci_sep<a class="anchor" aria-label="anchor" href="#arg-ci-sep"></a></dt>
-<dd><p>CI separator</p></dd>
+<dd><p>CI separator, often <code>" - "</code> (default) or <code>"; "</code> (scalar character)</p></dd>
 
 
 <dt id="arg-use-exp">use_exp<a class="anchor" aria-label="anchor" href="#arg-use-exp"></a></dt>
-<dd><p>exp-transform <code>est</code>, <code>lwr</code>, and <code>upr</code></p></dd>
+<dd><p>exp-transform <code>est</code>, <code>lwr</code>, and <code>upr</code>. <code>FALSE</code> (default) or <code>TRUE</code></p></dd>
 
 
 <dt id="arg-upr-lim">upr_lim<a class="anchor" aria-label="anchor" href="#arg-upr-lim"></a></dt>
 <dd><p>upper limit for printing of <code>upr</code> applied when <code>use_exp</code> is
-<code>TRUE</code> to avoid very large numbers.</p></dd>
+<code>TRUE</code> to avoid very large numbers (numeric scalar)</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -96,8 +96,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Basic usage:</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Basic usage:</span></span></span>
 <span class="r-in"><span><span class="fu">format_estci</span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">0.8</span>, <span class="fl">1.6</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1.20 (0.80 - 1.60)"</span>
 <span class="r-in"><span></span></span>
@@ -105,7 +104,7 @@
 <span class="r-in"><span><span class="fu">format_estci</span><span class="op">(</span><span class="fl">1.2</span>, <span class="fl">0.8</span>, <span class="fl">1.6</span>, ci_sep<span class="op">=</span><span class="st">"; "</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1.20 (0.80; 1.60)"</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Multiple point and interval estimates:</span></span></span>
+<span class="r-in"><span><span class="co"># Multiple point and interval estimates (vector input):</span></span></span>
 <span class="r-in"><span><span class="fu">format_estci</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1.00 (0.00 - 2.00)" "2.00 (1.00 - 3.00)"</span>
 <span class="r-in"><span></span></span>
@@ -114,9 +113,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2.72 (1.00 - 7.39)"  "7.39 (2.72 - 20.09)"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># When use_exp = TRUE the upper limit is capped at upr_lim = 100: </span></span></span>
-<span class="r-in"><span><span class="fu">format_estci</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">5</span>, use_exp <span class="op">=</span> <span class="cn">TRUE</span>, ci_sep<span class="op">=</span><span class="st">"; "</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2.72 (1.00; 54.60)" "7.39 (2.72; &gt;100)" </span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">format_estci</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">5</span>, use_exp <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2.72 (1.00 - 54.60)" "7.39 (2.72 - &gt;100)" </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

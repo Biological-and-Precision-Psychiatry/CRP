@@ -1,6 +1,6 @@
-# Get First or Last Element
+# Get first or last element
 
-Get First or Last Element
+Get first or last element
 
 ## Usage
 

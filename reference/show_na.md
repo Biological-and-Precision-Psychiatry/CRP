@@ -1,6 +1,6 @@
-# Summarize `NA` values in a `data.table`
+# Summarize `NA` values in a `data.frame` or `data.table`
 
-Summarize `NA` values in a `data.table`
+Summarize `NA` values in a `data.frame` or `data.table`
 
 ## Usage
 

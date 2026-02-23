@@ -1,6 +1,6 @@
-# Add Column Total and Row Percentages to a `data.table` Tabulation
+# Add column total and row percentages to a `data.table` tabulation
 
-Add Column Total and Row Percentages to a `data.table` Tabulation
+Add column total and row percentages to a `data.table` tabulation
 
 ## Usage
 

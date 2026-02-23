@@ -20,32 +20,32 @@ format_estci(
 
 - est:
 
-  parameter estimate (numeric scalar)
+  parameter estimate (numeric vector)
 
 - lwr:
 
-  lower limit (numeric scalar)
+  lower limit (numeric vector)
 
 - upr:
 
-  upper limit (numeric scalar)
+  upper limit (numeric vector)
 
 - digits:
 
-  number of digits (numeric scalar)
+  number of decimals (numeric scalar)
 
 - ci_sep:
 
-  CI separator
+  CI separator, often `" - "` (default) or `"; "` (scalar character)
 
 - use_exp:
 
-  exp-transform `est`, `lwr`, and `upr`
+  exp-transform `est`, `lwr`, and `upr`. `FALSE` (default) or `TRUE`
 
 - upr_lim:
 
   upper limit for printing of `upr` applied when `use_exp` is `TRUE` to
-  avoid very large numbers.
+  avoid very large numbers (numeric scalar)
 
 ## Value
 
@@ -71,7 +71,7 @@ format_estci(1.2, 0.8, 1.6)
 format_estci(1.2, 0.8, 1.6, ci_sep="; ")
 #> [1] "1.20 (0.80; 1.60)"
 
-# Multiple point and interval estimates:
+# Multiple point and interval estimates (vector input):
 format_estci(1:2, 0:1, 2:3)
 #> [1] "1.00 (0.00 - 2.00)" "2.00 (1.00 - 3.00)"
 
@@ -80,6 +80,6 @@ format_estci(1:2, 0:1, 2:3, use_exp = TRUE)
 #> [1] "2.72 (1.00 - 7.39)"  "7.39 (2.72 - 20.09)"
 
 # When use_exp = TRUE the upper limit is capped at upr_lim = 100: 
-format_estci(1:2, 0:1, 4:5, use_exp = TRUE, ci_sep="; ")
-#> [1] "2.72 (1.00; 54.60)" "7.39 (2.72; >100)" 
+format_estci(1:2, 0:1, 4:5, use_exp = TRUE)
+#> [1] "2.72 (1.00 - 54.60)" "7.39 (2.72 - >100)" 
 ```

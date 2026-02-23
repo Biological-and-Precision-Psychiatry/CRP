@@ -35,6 +35,10 @@ Rune Haubo B Christensen
 ## Examples
 
 ``` r
+show_set(1:5, 3:7)
+#>   nA nB uniqueA uniqueB union intersect AnotB BnotA
+#> 1  5  5       5       5     7         3     2     2
+
 head(iris)
 #>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 #> 1          5.1         3.5          1.4         0.2  setosa
