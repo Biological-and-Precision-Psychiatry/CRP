@@ -56,6 +56,15 @@ test_that("quick_read_excel() errors with a clear message for a missing file", {
   )
 })
 
+test_that("quick_read_excel() errors if copy_to_temp() fails", {
+  with_mocked_bindings(
+    copy_to_temp = function(...) FALSE,
+    {
+      expect_error(quick_read_excel(xlsx_path),
+                   "Failed to copy 'path' to a temporary file.")
+    })
+})
+
 ## temp file cleanup -------------------------------------------------------
 
 test_that("quick_read_excel() leaves no excel temp files behind", {

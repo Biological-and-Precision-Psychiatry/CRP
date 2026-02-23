@@ -99,6 +99,10 @@ test_that("totpct() errors when n_col index is out of bounds", {
   expect_error(totpct(make_species_tab(), n_col = 99L))
 })
 
+test_that("totpct() errors when n_col is incorrectly named", {
+  expect_error(totpct(make_species_tab(), n_col = "n"), "Cannot find variable 'n' in 'tab'")
+})
+
 test_that("totpct() errors when n_col column cannot be coerced to numeric", {
   tab <- as.data.table(data.frame(
     label = c("a", "b", "c"),

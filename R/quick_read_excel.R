@@ -49,11 +49,18 @@ quick_read_excel <- function(path, sheet = NULL, range = NULL, col_names = TRUE,
   if (!file.exists(path)) stop("'path' does not exist: ", path)
   file.ext <- tools::file_ext(path)
   TMP_FILE <- tempfile(fileext = paste0(".", file.ext))
-  on.exit(unlink(TMP_FILE))
-  file_copy_success <- file.copy(path, TMP_FILE)
+  on.exit(unlink(TMP_FILE), add = TRUE)
+  file_copy_success <- copy_to_temp(path, TMP_FILE)
+  # file_copy_success <- file.copy(path, TMP_FILE)
   if(!file_copy_success) stop("Failed to copy 'path' to a temporary file.")
   read_excel(TMP_FILE, sheet = sheet, range = range, col_names = col_names, 
              col_types = col_types, na = na, trim_ws = trim_ws, skip = skip, 
              n_max = n_max, guess_max = guess_max, progress = progress, 
              .name_repair = .name_repair)
 }
+
+# The copy_to_temp() function is needed for unit tests in which we have to 
+# provoke failure of the file copy. This is achieved by locally defining 
+# 'copy_to_temp = function(...) FALSE' in the specific test. 
+# See tests/testthat/test-quick_read_excel.R for details.
+copy_to_temp <- function(path, dest) file.copy(path, dest)
