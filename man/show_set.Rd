@@ -14,7 +14,8 @@ show_set(A, B, unique = TRUE)
 \item{unique}{compare only unique entries in \code{A} and \code{B}?}
 }
 \value{
-a \code{data.frame} with 1 row and columns \code{nA}, \code{nB}, \code{uniqueA}, \code{uniqueB}, \code{union} \code{intersect}, \code{AnotB}, \code{BnotA}
+a \code{data.frame} with 1 row and columns \code{nA}, \code{nB}, \code{uniqueA},
+\code{uniqueB}, \code{union}, \code{intersect}, \code{AnotB}, \code{BnotA}
 }
 \description{
 Convenience function to compare two variables in terms of length, number of unique values, union, and intersection.

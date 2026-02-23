@@ -9,7 +9,7 @@ do_format(x, digits = 2)
 \arguments{
 \item{x}{numeric vector of values to format as text}
 
-\item{digits}{number of digits in the formatted number}
+\item{digits}{number of decimal places in the formatted output}
 }
 \value{
 the input \code{x} formatted to text (character vector)

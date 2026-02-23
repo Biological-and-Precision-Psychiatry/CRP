@@ -9,7 +9,8 @@ format_pval2(p, digits = 3)
 \arguments{
 \item{p}{Numeric p-values}
 
-\item{digits}{Number of digits}
+\item{digits}{Number of decimal places. P-values below \code{10^{-digits}}
+are printed as e.g. \code{"< 0.001"}.}
 }
 \value{
 Character vector

@@ -117,7 +117,8 @@ last <- function(x) {
 #' @param B a vector
 #' @param unique compare only unique entries in `A` and `B`?
 #'
-#' @returns a `data.frame` with 1 row and columns `nA`, `nB`, `uniqueA`, `uniqueB`, `union` `intersect`, `AnotB`, `BnotA`
+#' @returns a `data.frame` with 1 row and columns `nA`, `nB`, `uniqueA`,
+#'   `uniqueB`, `union`, `intersect`, `AnotB`, `BnotA`
 #' @author Rune Haubo B Christensen
 #' @export
 #'

@@ -9,7 +9,7 @@
 #' `round` and `format` as illustrated in examples.
 #'
 #' @param x numeric vector of values to format as text
-#' @param digits number of digits in the formatted number
+#' @param digits number of decimal places in the formatted output
 #'
 #' @returns the input `x` formatted to text (character vector)
 #' @export
@@ -32,7 +32,7 @@ do_format <- function(x, digits = 2) {
             length(x) > 0,
             is.numeric(digits),
             length(digits) == 1L)
-  trimws(format(round(x, digits[1L]), nsmall = digits[1L], scientific = FALSE))
+  trimws(format(round(x, digits), nsmall = digits, scientific = FALSE))
 }
 
 ################################################################################
@@ -75,11 +75,11 @@ do_format <- function(x, digits = 2) {
 #' 
 format_estci <- function(est, lwr, upr, digits = 2, ci_sep = " - ", 
                          use_exp = FALSE, upr_lim = 100) {
-  sapply(c(est, lwr, upr), function(arg) 
-    stopifnot(is.numeric(arg), 
-              length(arg) > 0))
-  sapply(c(digits, ci_sep, use_exp, upr_lim), function(arg)
-    stopifnot(length(arg) == 1L))
+  stopifnot(is.numeric(est), length(est) > 0,
+            is.numeric(lwr), length(lwr) > 0,
+            is.numeric(upr), length(upr) > 0)
+  stopifnot(length(digits) == 1L, length(ci_sep) == 1L,
+            length(use_exp) == 1L, length(upr_lim) == 1L)
   stopifnot(length(est) == length(lwr),
             length(est) == length(upr),
             is.numeric(digits),
@@ -111,8 +111,9 @@ format_estci <- function(est, lwr, upr, digits = 2, ci_sep = " - ",
 #' Easy to use modification of `format.pval`.
 #'
 #' @param p Numeric p-values
-#' @param digits Number of digits
-#' 
+#' @param digits Number of decimal places. P-values below `10^{-digits}`
+#'   are printed as e.g. `"< 0.001"`.
+#'
 #' @return Character vector
 #' 
 #' @seealso [format.pval()] which is called internally
@@ -128,22 +129,23 @@ format_pval2 <- function(p, digits = 3) {
             length(p) > 0,
             is.numeric(digits),
             length(digits) == 1L)
-  format.pval(round(p, digits),
-              digits = digits,
-              eps = 10^(-digits),
-              scientific = FALSE,
-              nsmall = digits)
+  trimws(format.pval(round(p, digits),
+                    digits = digits,
+                    eps = 10^(-digits),
+                    scientific = FALSE,
+                    nsmall = digits))
 }
 
 ################################################################################
-## format_pval2
+## get_coeftab
 ################################################################################
 #' Extract coefficient table with CI and p-value from a model fit
 #'
 #' @param model a model fit such as that produced by `lm` or `glm`
 #' @param coef_name name of coefficient for which to get coefficient table
 #' @param transform optional function (e.g., `exp`) for a log-linear model
-#' @param ci_method `method` to obtain confidence intervals
+#' @param ci_method function used to obtain confidence intervals, defaulting to
+#'   [confint.default()]
 #' @param digits number of digits
 #' @param digits.p number of digits in p-value
 #' @param ci_sep CI separator
@@ -176,13 +178,13 @@ get_coeftab <- function(model, coef_name, transform = function(x) x,
   b <- coef(summary(model))
   ci <- if(inherits(model, "lm") & !inherits(model, "glm")) confint(model) else ci_method(model)
   stopifnot(is.character(coef_name),
-            coef_name %in% rownames(b))
-  res <- as.data.table(cbind(b[coef_name, , drop=FALSE], ci[coef_name, , drop=FALSE]))[, -3]
+            all(coef_name %in% rownames(b)))
+  res <- as.data.table(cbind(b[coef_name, , drop=FALSE], ci[coef_name, , drop=FALSE]))[, !"Std. Error"]
   colnms <- colnames(res)
   pval_nm <- colnms[grep("Pr\\(>", colnms)]
   nms <- c(colnames(b)[1], colnames(ci))
   res[, (nms) := transform(.SD), .SDcols=nms]
-  res[, pvalue := format_pval2(get(pval_nm), digits = digits.p)]
+  res[, pvalue := format_pval2(res[[pval_nm]], digits = digits.p)]
   res[, est_ci := format_estci(Estimate, `2.5 %`, `97.5 %`, digits = digits, 
                                ci_sep = ci_sep)]
   if(return == "all") res[] else res[, .(est_ci, pvalue)]

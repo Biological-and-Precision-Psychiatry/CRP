@@ -1,4 +1,8 @@
+# quick_read_excel.R
 
+################################################################################
+## quick_read_excel
+################################################################################
 #' Quickly read excel files from network drives
 #' 
 #' `readxl::read_excel` is very slow when reading excel files from network 
@@ -12,9 +16,9 @@
 #' 
 #' @inheritParams readxl::read_excel
 #'
-#' @returns A tibble
-#' @seealso [readxl::read_excel()] for further details on the behavior of the 
-#' function
+#' @returns a [tibble::tibble()] as returned by [readxl::read_excel()]
+#' @seealso [readxl::read_excel()] for further details on the behavior of the
+#'   function
 #' @author Rune Haubo B Christensen
 #' @export
 #' @importFrom readxl read_excel readxl_progress
@@ -41,7 +45,7 @@ quick_read_excel <- function(path, sheet = NULL, range = NULL, col_names = TRUE,
                              n_max = Inf, guess_max = min(1000, n_max), 
                              progress = readxl_progress(), 
                              .name_repair = "unique") {
-  stopifnot(file.exists(path))
+  if (!file.exists(path)) stop("'path' does not exist: ", path)
   file.ext <- tools::file_ext(path)
   TMP_FILE <- tempfile(fileext = paste0(".", file.ext))
   on.exit(unlink(TMP_FILE))

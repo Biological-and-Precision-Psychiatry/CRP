@@ -2,7 +2,7 @@
 
 library(devtools)
 # has_devel()
-r2path <- "~/GitHub/CRP/CRP"
+# r2path <- "~/GitHub/CRP/CRP"
 document()
 load_all()
 

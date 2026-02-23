@@ -74,7 +74,7 @@ and when the call is likely to run for several seconds or more. See
 ensures column names are not empty and are unique.}
 }
 \value{
-A tibble
+a \code{\link[tibble:tibble]{tibble::tibble()}} as returned by \code{\link[readxl:read_excel]{readxl::read_excel()}}
 }
 \description{
 \code{readxl::read_excel} is very slow when reading excel files from network

@@ -7,9 +7,9 @@
 #' Add Column Total and Row Percentages to a `data.table` Tabulation
 #'
 #' @param tab a `data.table` tabulation; see Examples
-#' @param name_col indicator of name column (character or numeric)
-#' @param n_col indicator of the numeric column (character or numeric)
-#' @param digits number of digits in percentages in result
+#' @param name_col name or index of the label column (character or integer)
+#' @param n_col name or index of the count/numeric column (character or integer)
+#' @param digits number of decimal places in the percentage column
 #'
 #' @returns `tab` with appended total-row and percent-column
 #' @author Rune Haubo B Christensen

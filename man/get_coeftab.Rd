@@ -22,7 +22,8 @@ get_coeftab(
 
 \item{transform}{optional function (e.g., \code{exp}) for a log-linear model}
 
-\item{ci_method}{\code{method} to obtain confidence intervals}
+\item{ci_method}{function used to obtain confidence intervals, defaulting to
+\code{\link[=confint.default]{confint.default()}}}
 
 \item{digits}{number of digits}
 

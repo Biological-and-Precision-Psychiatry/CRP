@@ -51,7 +51,7 @@ format_estci(1:2, 0:1, 2:3)
 format_estci(1:2, 0:1, 2:3, use_exp = TRUE)
 
 # When use_exp = TRUE the upper limit is capped at upr_lim = 100: 
-format_estci(1:2, 0:1, 4:5, use_exp = TRUE)
+format_estci(1:2, 0:1, 4:5, use_exp = TRUE, ci_sep="; ")
 
 }
 \seealso{

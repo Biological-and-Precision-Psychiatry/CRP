@@ -1,7 +1,7 @@
 Package: CRP
 Type: Package
 Title: An R-Package from the Copenhagen Research Centre for Biological and Precision Psychiatry
-Version: 0.1.0
+Version: 0.1.0.9001
 Authors@R: person("Rune", "Haubo B. Christensen", role =  c("aut", "cre"),
                    email = "rune.hc+rprog@pm.me", 
                    comment = c(ORCID = "0000-0002-4494-3399"))

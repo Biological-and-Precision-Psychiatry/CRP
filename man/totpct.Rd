@@ -9,11 +9,11 @@ totpct(tab, name_col = 1, n_col = 2, digits = 2)
 \arguments{
 \item{tab}{a \code{data.table} tabulation; see Examples}
 
-\item{name_col}{indicator of name column (character or numeric)}
+\item{name_col}{name or index of the label column (character or integer)}
 
-\item{n_col}{indicator of the numeric column (character or numeric)}
+\item{n_col}{name or index of the count/numeric column (character or integer)}
 
-\item{digits}{number of digits in percentages in result}
+\item{digits}{number of decimal places in the percentage column}
 }
 \value{
 \code{tab} with appended total-row and percent-column
