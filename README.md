@@ -1,7 +1,6 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/Biological-and-Precision-Psychiatry/CRP/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Biological-and-Precision-Psychiatry/CRP/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/Biological-and-Precision-Psychiatry/CRP/graph/badge.svg)](https://app.codecov.io/gh/Biological-and-Precision-Psychiatry/CRP)
-[![codecov](https://codecov.io/github/Biological-and-Precision-Psychiatry/CRP/graph/badge.svg?token=T61O9M75UH)](https://codecov.io/github/Biological-and-Precision-Psychiatry/CRP)
 <!-- badges: end -->
 
 # CRP - An R-package from the Copenhagen Research Centre for Biological and Precision Psychiatry 
