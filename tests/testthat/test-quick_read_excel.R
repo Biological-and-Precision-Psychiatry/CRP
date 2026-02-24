@@ -3,6 +3,14 @@
 xls_path  <- system.file("extdata", "clippy.xls",  package = "readxl", mustWork = TRUE)
 xlsx_path <- system.file("extdata", "clippy.xlsx", package = "readxl", mustWork = TRUE)
 
+## interface ---------------------------------------------------------------
+
+test_that("quick_read_excel() exposes the same argument names as readxl::read_excel()", {
+  read_excel_args       <- formals(readxl::read_excel)
+  quick_read_excel_args <- formals(CRP::quick_read_excel)
+  expect_equal(names(quick_read_excel_args), names(read_excel_args))
+})
+
 ## return value ------------------------------------------------------------
 
 test_that("quick_read_excel() reads an xls file and returns a tibble", {
